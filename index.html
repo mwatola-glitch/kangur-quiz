@@ -1267,7 +1267,143 @@ body {
 .level-emoji { font-size: 2.2rem; line-height: 1; }
 .level-name { font-size: 1.15rem; font-weight: 800; color: var(--accent-gold); }
 .level-subtitle { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); }
+/* ============================================
+   LOGIN SCREEN
+   ============================================ */
+.login-card { padding: 28px; max-width: 420px; margin: 0 auto; }
+.login-card h2 { text-align: center; margin-bottom: 20px; color: var(--accent-gold); font-size: 1.4rem; }
+.login-field { margin-bottom: 16px; }
+.login-field label {
+  display: block; font-size: 0.8rem; font-weight: 700;
+  color: var(--text-secondary); margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.login-field input {
+  width: 100%; padding: 12px 16px; box-sizing: border-box;
+  border: 2px solid var(--glass-border); border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03); color: var(--text-primary);
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  transition: var(--transition);
+}
+.login-field input:focus {
+  outline: none; border-color: var(--accent-gold);
+  background: rgba(255,213,79,0.05);
+}
+.login-field input::placeholder { color: var(--text-muted); font-weight: 400; }
+.login-note { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); }
+.login-error { color: var(--accent-coral); font-size: 0.85rem; text-align: center; margin-top: 8px; display: none; }
+
+/* ============================================
+   USER BAR
+   ============================================ */
+.user-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; margin-bottom: 20px; border-radius: var(--radius-md);
+}
+.user-bar .user-info { display: flex; align-items: center; gap: 12px; }
+.user-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.1rem; color: white; flex-shrink: 0;
+}
+.user-name { font-weight: 800; font-size: 0.95rem; color: var(--text-primary); }
+.user-detail { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+.user-bar .tool-btn {
+  background: none; border: 2px solid var(--glass-border); border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-size: 1rem; padding: 6px 10px;
+  cursor: pointer; transition: var(--transition);
+}
+.user-bar .tool-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+.btn-leaderboard {
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 800;
+  padding: 14px 28px; border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-lg); background: rgba(255,213,79,0.08);
+  color: var(--accent-gold); cursor: pointer; transition: var(--transition);
+  width: 100%;
+}
+.btn-leaderboard:hover { background: rgba(255,213,79,0.15); transform: scale(1.02); }
+
+/* ============================================
+   LEADERBOARD SCREEN
+   ============================================ */
+.leaderboard-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.lb-tab {
+  flex: 1; font-family: var(--font-body); font-size: 0.9rem; font-weight: 700;
+  padding: 12px; border: 2px solid var(--glass-border); border-radius: var(--radius-md);
+  background: transparent; color: var(--text-secondary); cursor: pointer; transition: var(--transition);
+}
+.lb-tab.selected { border-color: var(--accent-gold); background: rgba(255,213,79,0.1); color: var(--accent-gold); }
+.lb-filters { padding: 16px; margin-bottom: 16px; }
+.lb-filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.lb-filter-row:last-child { margin-bottom: 0; }
+.lb-filter-row label {
+  font-size: 0.75rem; font-weight: 700; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 1px; min-width: 45px;
+}
+.lb-select {
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+  padding: 8px 12px; border: 2px solid var(--glass-border); border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.03); color: var(--text-primary); cursor: pointer;
+}
+.lb-select option { background: var(--bg-primary); color: var(--text-primary); }
+.lb-scope-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.lb-scope-btn {
+  font-family: var(--font-body); font-size: 0.78rem; font-weight: 700;
+  padding: 6px 12px; border: 2px solid var(--glass-border); border-radius: 20px;
+  background: transparent; color: var(--text-secondary); cursor: pointer; transition: var(--transition);
+}
+.lb-scope-btn.selected { border-color: var(--accent-gold); background: rgba(255,213,79,0.1); color: var(--accent-gold); }
+.lb-table { padding: 12px; }
+.lb-entry {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); transition: var(--transition);
+}
+.lb-entry:last-child { border-bottom: none; }
+.lb-entry.is-me { background: rgba(255,213,79,0.08); border-radius: var(--radius-sm); }
+.lb-rank {
+  font-family: var(--font-mono); font-size: 1rem; font-weight: 800;
+  min-width: 32px; text-align: center; color: var(--text-muted);
+}
+.lb-rank.gold { color: #FFD700; }
+.lb-rank.silver { color: #C0C0C0; }
+.lb-rank.bronze { color: #CD7F32; }
+.lb-info { flex: 1; min-width: 0; }
+.lb-name { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lb-meta { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
+.lb-score { font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; color: var(--accent-gold); white-space: nowrap; }
+.lb-empty { text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 0.9rem; }
+.lb-loading { text-align: center; padding: 32px 16px; color: var(--text-secondary); }
+.spinner {
+  width: 20px; height: 20px; border: 3px solid var(--glass-border);
+  border-top-color: var(--accent-gold); border-radius: 50%;
+  animation: spin 0.8s linear infinite; display: inline-block; vertical-align: middle; margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.offline-banner {
+  text-align: center; padding: 8px; font-size: 0.78rem; font-weight: 700;
+  color: var(--accent-coral); background: rgba(255,107,107,0.08);
+  border-radius: var(--radius-sm); margin-bottom: 12px; display: none;
+}
+
+/* Edit profile modal */
+.edit-profile-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;
+}
+.edit-profile-overlay.active { display: flex; }
+.edit-profile-box {
+  background: var(--bg-secondary); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg); padding: 28px; max-width: 400px; width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+.edit-profile-box h3 { color: var(--accent-gold); margin-bottom: 20px; text-align: center; }
 </style>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -1282,13 +1418,57 @@ body {
 <!-- App -->
 <div class="app" id="app">
 
-  <!-- ==================== START SCREEN ==================== -->
-  <div class="screen active" id="startScreen">
+  <!-- ==================== LOGIN SCREEN ==================== -->
+  <div class="screen" id="loginScreen">
     <div class="start-header">
       <div class="start-logo" aria-hidden="true">🦘</div>
       <h1 class="start-title">Kangur Matematyczny</h1>
       <p class="start-subtitle">— Quiz —</p>
     </div>
+    <div class="login-card glass">
+      <h2>Witaj! Przedstaw się</h2>
+      <div class="login-field">
+        <label for="loginName">Imię (lub pseudonim)</label>
+        <input type="text" id="loginName" placeholder="np. Kasia" maxlength="30" autocomplete="off">
+      </div>
+      <div class="login-field">
+        <label for="loginClass">Klasa</label>
+        <input type="text" id="loginClass" placeholder="np. 3b" maxlength="10" autocomplete="off">
+      </div>
+      <div class="login-field">
+        <label for="loginSchool">Szkoła</label>
+        <input type="text" id="loginSchool" placeholder="np. SP nr 5 w Krakowie" maxlength="100" autocomplete="off">
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <div style="text-align:center; margin-top:24px;">
+        <button class="btn-start" id="btnLogin">Grajmy! 🎮</button>
+      </div>
+      <p class="login-note">Nie wymagamy hasła ani emaila.<br>Twoje dane służą tylko do wyświetlania w rankingu.</p>
+    </div>
+  </div>
+
+  <!-- ==================== START SCREEN ==================== -->
+  <div class="screen" id="startScreen">
+    <div class="start-header">
+      <div class="start-logo" aria-hidden="true">🦘</div>
+      <h1 class="start-title">Kangur Matematyczny</h1>
+      <p class="start-subtitle">— Quiz —</p>
+    </div>
+
+    <!-- User bar -->
+    <div class="user-bar glass" id="userBar" style="display:none;">
+      <div class="user-info">
+        <span class="user-avatar" id="userAvatar">?</span>
+        <div>
+          <div class="user-name" id="userName"></div>
+          <div class="user-detail" id="userDetail"></div>
+        </div>
+      </div>
+      <button class="tool-btn" id="btnEditProfile" title="Edytuj profil">✏️</button>
+    </div>
+
+    <!-- Offline banner -->
+    <div class="offline-banner" id="offlineBanner">📡 Tryb offline — wyniki nie będą zapisane w rankingu</div>
 
     <div style="padding: 0 4px;">
       <div class="section-label">Wybierz poziom</div>
@@ -1341,6 +1521,8 @@ body {
       <div class="start-action">
         <button class="btn-start" id="btnStart" disabled>▶ ROZPOCZNIJ</button>
       </div>
+
+      <button class="btn-leaderboard" id="btnLeaderboard">🏅 Ranking</button>
 
       <div class="best-scores glass" id="bestScores">
         <div class="best-scores-title">⭐ Najlepsze wyniki</div>
@@ -1420,6 +1602,7 @@ body {
         <button class="btn-primary" id="btnReview">📋 Przejrzyj odpowiedzi</button>
         <button class="btn-secondary" id="btnReplay">🔄 Zagraj ponownie</button>
         <button class="btn-secondary" id="btnHome">🏠 Menu główne</button>
+        <button class="btn-secondary" id="btnResultsLeaderboard">🏅 Ranking dla tego testu</button>
       </div>
     </div>
   </div>
@@ -1436,6 +1619,75 @@ body {
     </div>
   </div>
 
+  <!-- ==================== LEADERBOARD SCREEN ==================== -->
+  <div class="screen" id="leaderboardScreen">
+    <div class="review-header glass">
+      <h2>🏅 Ranking</h2>
+      <button class="review-back-btn" id="btnLeaderboardBack">← Menu główne</button>
+    </div>
+
+    <div class="leaderboard-tabs">
+      <button class="lb-tab selected" data-tab="test" id="lbTabTest">Wynik z testu</button>
+      <button class="lb-tab" data-tab="overall" id="lbTabOverall">Ranking ogólny</button>
+    </div>
+
+    <div class="lb-filters glass">
+      <div class="lb-filter-row">
+        <label>Poziom</label>
+        <div id="lbLevelBtns" style="display:flex; gap:6px;"></div>
+      </div>
+      <div class="lb-filter-row" id="lbTestFilters">
+        <label>Rok</label>
+        <select id="lbYearSelect" class="lb-select"></select>
+        <label style="margin-left:8px;">Tryb</label>
+        <select id="lbModeSelect" class="lb-select">
+          <option value="exam">Konkurs</option>
+          <option value="practice">Trening</option>
+          <option value="random">Losowe</option>
+        </select>
+      </div>
+      <div class="lb-filter-row">
+        <label>Zakres</label>
+        <div class="lb-scope-btns" id="lbScopeBtns">
+          <button class="lb-scope-btn selected" data-scope="global">Wszyscy</button>
+          <button class="lb-scope-btn" data-scope="school">Moja szkoła</button>
+          <button class="lb-scope-btn" data-scope="class">Moja klasa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lb-table glass">
+      <div class="lb-loading" id="lbLoading" style="display:none;">
+        <span class="spinner"></span> Ładowanie rankingu...
+      </div>
+      <div class="lb-empty" id="lbEmpty" style="display:none;">Brak wyników dla wybranych kryteriów.</div>
+      <div id="lbList"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Edit profile modal -->
+<div class="edit-profile-overlay" id="editProfileOverlay">
+  <div class="edit-profile-box">
+    <h3>✏️ Edytuj profil</h3>
+    <div class="login-field">
+      <label for="editName">Imię</label>
+      <input type="text" id="editName" maxlength="30">
+    </div>
+    <div class="login-field">
+      <label for="editClass">Klasa</label>
+      <input type="text" id="editClass" maxlength="10">
+    </div>
+    <div class="login-field">
+      <label for="editSchool">Szkoła</label>
+      <input type="text" id="editSchool" maxlength="100">
+    </div>
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn-secondary" id="btnEditCancel" style="flex:1;">Anuluj</button>
+      <button class="btn-primary" id="btnEditSave" style="flex:1;">Zapisz</button>
+    </div>
+  </div>
 </div>
 
 <!-- Confirm modal -->
@@ -1506,7 +1758,461 @@ const state = {
   timeRemaining: TIME_LIMIT,
   quizFinished: false,
   solutionShown: {},
+  // Firebase / user
+  user: null,
+  firebaseReady: false,
+  isOnline: navigator.onLine,
 };
+
+// =============================================================================
+// FIREBASE
+// =============================================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyDK2TYx5FTj3Gk5x6Yg8kEfjlKTh_33lcE",
+  authDomain: "kangur-quiz-app.firebaseapp.com",
+  projectId: "kangur-quiz-app",
+  storageBucket: "kangur-quiz-app.firebasestorage.app",
+  messagingSenderId: "956832676569",
+  appId: "1:956832676569:web:ce9a051ecc564489e65cc8"
+};
+
+let auth = null;
+let db = null;
+
+function initFirebase() {
+  if (typeof firebase === 'undefined') {
+    console.warn('Firebase SDK not loaded — offline mode');
+    state.firebaseReady = false;
+    showScreen('start');
+    updateOfflineBanner();
+    return;
+  }
+  try {
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    db = firebase.firestore();
+    db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
+
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const profile = await loadUserProfile(user.uid);
+        if (profile) {
+          state.user = { uid: user.uid, ...profile };
+          state.firebaseReady = true;
+          renderUserBar();
+          showScreen('start');
+          syncLocalScoresToFirestore();
+        } else {
+          // Has auth but no profile — show login to complete
+          state.firebaseReady = true;
+          showScreen('login');
+        }
+      } else {
+        state.firebaseReady = true;
+        showScreen('login');
+      }
+    });
+  } catch (e) {
+    console.error('Firebase init error:', e);
+    state.firebaseReady = false;
+    showScreen('start');
+  }
+}
+
+async function loadUserProfile(uid) {
+  if (!db) return null;
+  try {
+    const doc = await db.collection('users').doc(uid).get();
+    return doc.exists ? doc.data() : null;
+  } catch (e) {
+    console.error('loadUserProfile error:', e);
+    return null;
+  }
+}
+
+async function saveUserProfile(uid, data) {
+  if (!db) return;
+  try {
+    await db.collection('users').doc(uid).set({
+      name: data.name,
+      className: data.className,
+      school: data.school,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }, { merge: true });
+  } catch (e) {
+    console.error('saveUserProfile error:', e);
+  }
+}
+
+async function handleLogin() {
+  const name = $('loginName').value.trim();
+  const className = $('loginClass').value.trim();
+  const school = $('loginSchool').value.trim();
+  const errEl = $('loginError');
+
+  if (!name) { errEl.textContent = 'Wpisz swoje imię!'; errEl.style.display = 'block'; return; }
+  if (!className) { errEl.textContent = 'Wpisz swoją klasę!'; errEl.style.display = 'block'; return; }
+  if (!school) { errEl.textContent = 'Wpisz nazwę szkoły!'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+
+  $('btnLogin').disabled = true;
+  $('btnLogin').textContent = 'Łączenie...';
+
+  try {
+    if (!auth) throw new Error('No auth');
+    const cred = await auth.signInAnonymously();
+    const uid = cred.user.uid;
+    const profile = { name, className, school };
+    await saveUserProfile(uid, { ...profile, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+    state.user = { uid, ...profile };
+    state.firebaseReady = true;
+    renderUserBar();
+    showScreen('start');
+    syncLocalScoresToFirestore();
+  } catch (e) {
+    console.error('Login error:', e);
+    errEl.textContent = 'Błąd połączenia. Spróbuj ponownie.';
+    errEl.style.display = 'block';
+    $('btnLogin').disabled = false;
+    $('btnLogin').textContent = 'Grajmy! 🎮';
+  }
+}
+
+function renderUserBar() {
+  const bar = $('userBar');
+  if (!state.user) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  $('userAvatar').textContent = state.user.name.charAt(0).toUpperCase();
+  $('userName').textContent = state.user.name;
+  $('userDetail').textContent = `${state.user.className} — ${state.user.school}`;
+}
+
+function updateOfflineBanner() {
+  const banner = $('offlineBanner');
+  if (!banner) return;
+  banner.style.display = (!state.firebaseReady || !state.isOnline) ? 'block' : 'none';
+}
+
+// =============================================================================
+// FIRESTORE SCORE SYNC
+// =============================================================================
+async function saveScoreToFirestore(results) {
+  if (!db || !state.user) return;
+  const uid = state.user.uid;
+  const level = state.selectedLevel;
+  const yearKey = state.mode === 'random' ? 'random' : state.selectedYear;
+  const mode = state.mode;
+  const docId = `${uid}_${level}_${yearKey}_${mode}`;
+
+  try {
+    const docRef = db.collection('scores').doc(docId);
+    const existing = await docRef.get();
+    const existingScore = existing.exists ? (existing.data().score || 0) : 0;
+
+    if (results.score > existingScore) {
+      await docRef.set({
+        uid, name: state.user.name, className: state.user.className, school: state.user.school,
+        level, year: String(yearKey), mode,
+        score: results.score, maxScore: results.maxScore,
+        correct: results.correct, total: state.tasks.length,
+        elapsed: results.elapsed,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      updateAggregates(uid, level);
+    }
+  } catch (e) {
+    console.error('saveScoreToFirestore error:', e);
+  }
+}
+
+async function updateAggregates(uid, level) {
+  if (!db) return;
+  try {
+    const snap = await db.collection('scores')
+      .where('uid', '==', uid)
+      .where('level', '==', level)
+      .where('mode', '==', 'exam')
+      .get();
+
+    let totalScore = 0, quizCount = 0, bestSingle = 0;
+    snap.forEach(doc => {
+      const d = doc.data();
+      if (d.year !== 'random') {
+        totalScore += d.score;
+        quizCount++;
+        if (d.score > bestSingle) bestSingle = d.score;
+      }
+    });
+
+    const aggId = `${uid}_${level}`;
+    await db.collection('aggregates').doc(aggId).set({
+      uid, name: state.user.name, className: state.user.className, school: state.user.school,
+      level,
+      totalScore, quizCount,
+      avgScore: quizCount > 0 ? Math.round((totalScore / quizCount) * 100) / 100 : 0,
+      bestSingleScore: bestSingle,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  } catch (e) {
+    console.error('updateAggregates error:', e);
+  }
+}
+
+async function syncLocalScoresToFirestore() {
+  if (!db || !state.user) return;
+  const uid = state.user.uid;
+  const levelsToSync = new Set();
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const m = key.match(/^kangur_best_(\w+)_(.+)_(exam|practice|random)$/);
+    if (!m) continue;
+    const [, level, year, mode] = m;
+    const localScore = parseFloat(localStorage.getItem(key)) || 0;
+    if (localScore <= 0) continue;
+
+    const docId = `${uid}_${level}_${year}_${mode}`;
+    try {
+      const docRef = db.collection('scores').doc(docId);
+      const existing = await docRef.get();
+      const remoteScore = existing.exists ? (existing.data().score || 0) : 0;
+
+      if (localScore > remoteScore) {
+        await docRef.set({
+          uid, name: state.user.name, className: state.user.className, school: state.user.school,
+          level, year: String(year), mode,
+          score: localScore, maxScore: 105, correct: 0, total: 0, elapsed: 0,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        levelsToSync.add(level);
+      } else if (remoteScore > localScore) {
+        localStorage.setItem(key, remoteScore);
+      }
+    } catch (e) {
+      // Offline — will sync later
+    }
+  }
+
+  for (const level of levelsToSync) {
+    updateAggregates(uid, level);
+  }
+  renderBestScores();
+}
+
+// =============================================================================
+// EDIT PROFILE
+// =============================================================================
+function showEditProfile() {
+  if (!state.user) return;
+  $('editName').value = state.user.name;
+  $('editClass').value = state.user.className;
+  $('editSchool').value = state.user.school;
+  $('editProfileOverlay').classList.add('active');
+}
+
+function hideEditProfile() {
+  $('editProfileOverlay').classList.remove('active');
+}
+
+async function saveEditProfile() {
+  const name = $('editName').value.trim();
+  const className = $('editClass').value.trim();
+  const school = $('editSchool').value.trim();
+  if (!name || !className || !school) return;
+
+  const uid = state.user.uid;
+  state.user.name = name;
+  state.user.className = className;
+  state.user.school = school;
+  renderUserBar();
+  hideEditProfile();
+
+  await saveUserProfile(uid, { name, className, school });
+
+  // Update denormalized data in scores
+  if (!db) return;
+  try {
+    const snap = await db.collection('scores').where('uid', '==', uid).get();
+    const batch = db.batch();
+    snap.forEach(doc => {
+      batch.update(doc.ref, { name, className, school });
+    });
+    const aggSnap = await db.collection('aggregates').where('uid', '==', uid).get();
+    aggSnap.forEach(doc => {
+      batch.update(doc.ref, { name, className, school });
+    });
+    await batch.commit();
+  } catch (e) {
+    console.error('Profile update in scores error:', e);
+  }
+}
+
+// =============================================================================
+// LEADERBOARD
+// =============================================================================
+let lbState = { tab: 'test', level: null, year: null, mode: 'exam', scope: 'global' };
+
+function initLeaderboardUI() {
+  // Tab switching
+  $('lbTabTest').addEventListener('click', () => { setLbTab('test'); });
+  $('lbTabOverall').addEventListener('click', () => { setLbTab('overall'); });
+
+  // Scope buttons
+  document.querySelectorAll('.lb-scope-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lb-scope-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      lbState.scope = btn.dataset.scope;
+      loadLeaderboard();
+    });
+  });
+
+  // Year/mode selects
+  $('lbYearSelect').addEventListener('change', () => { lbState.year = $('lbYearSelect').value; loadLeaderboard(); });
+  $('lbModeSelect').addEventListener('change', () => { lbState.mode = $('lbModeSelect').value; loadLeaderboard(); });
+
+  // Back button
+  $('btnLeaderboardBack').addEventListener('click', goHome);
+}
+
+function setLbTab(tab) {
+  lbState.tab = tab;
+  $('lbTabTest').classList.toggle('selected', tab === 'test');
+  $('lbTabOverall').classList.toggle('selected', tab === 'overall');
+  $('lbTestFilters').style.display = tab === 'test' ? 'flex' : 'none';
+  loadLeaderboard();
+}
+
+function populateLbFilters(level) {
+  lbState.level = level || state.selectedLevel;
+
+  // Level buttons
+  const container = $('lbLevelBtns');
+  container.innerHTML = '';
+  ALL_LEVELS.forEach(lvl => {
+    const btn = document.createElement('button');
+    btn.className = 'lb-scope-btn' + (lvl === lbState.level ? ' selected' : '');
+    btn.textContent = QUIZ_DATA[lvl]?.emoji + ' ' + QUIZ_DATA[lvl]?.name;
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.lb-scope-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      lbState.level = lvl;
+      populateLbYears();
+      loadLeaderboard();
+    });
+    container.appendChild(btn);
+  });
+
+  populateLbYears();
+}
+
+function populateLbYears() {
+  const sel = $('lbYearSelect');
+  sel.innerHTML = '';
+  const years = getYearsForLevel(lbState.level);
+  years.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = parseInt(y) < 2000 ? `Test ${y}` : y;
+    sel.appendChild(opt);
+  });
+  lbState.year = sel.value;
+}
+
+function showLeaderboard(options) {
+  if (options) {
+    if (options.level) lbState.level = options.level;
+    if (options.year) lbState.year = String(options.year);
+    if (options.mode) lbState.mode = options.mode;
+    if (options.tab) lbState.tab = options.tab;
+  }
+  populateLbFilters(lbState.level);
+  $('lbModeSelect').value = lbState.mode;
+  if (lbState.year) $('lbYearSelect').value = lbState.year;
+  setLbTab(lbState.tab);
+  showScreen('leaderboard');
+}
+
+async function loadLeaderboard() {
+  if (!db) {
+    $('lbEmpty').style.display = 'block';
+    $('lbEmpty').textContent = 'Ranking wymaga połączenia z internetem.';
+    $('lbLoading').style.display = 'none';
+    $('lbList').innerHTML = '';
+    return;
+  }
+
+  $('lbLoading').style.display = 'block';
+  $('lbEmpty').style.display = 'none';
+  $('lbList').innerHTML = '';
+
+  try {
+    let query;
+    if (lbState.tab === 'test') {
+      query = db.collection('scores')
+        .where('level', '==', lbState.level)
+        .where('year', '==', String(lbState.year))
+        .where('mode', '==', lbState.mode);
+    } else {
+      query = db.collection('aggregates')
+        .where('level', '==', lbState.level);
+    }
+
+    // Scope filter
+    if (lbState.scope === 'school' && state.user) {
+      query = query.where('school', '==', state.user.school);
+    } else if (lbState.scope === 'class' && state.user) {
+      query = query.where('school', '==', state.user.school)
+                   .where('className', '==', state.user.className);
+    }
+
+    // Sort
+    const sortField = lbState.tab === 'test' ? 'score' : 'avgScore';
+    query = query.orderBy(sortField, 'desc').limit(50);
+
+    const snap = await query.get();
+    $('lbLoading').style.display = 'none';
+
+    if (snap.empty) {
+      $('lbEmpty').style.display = 'block';
+      return;
+    }
+
+    const list = $('lbList');
+    let rank = 0;
+    snap.forEach(doc => {
+      rank++;
+      const d = doc.data();
+      const isMe = state.user && d.uid === state.user.uid;
+      const scoreVal = lbState.tab === 'test' ? `${d.score} pkt` : `śr. ${d.avgScore} pkt`;
+
+      const entry = document.createElement('div');
+      entry.className = 'lb-entry' + (isMe ? ' is-me' : '');
+      const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+      const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+      entry.innerHTML = `
+        <div class="lb-rank ${rankClass}">${rankIcon}</div>
+        <div class="lb-info">
+          <div class="lb-name">${escapeHtml(d.name)}${isMe ? ' (Ty)' : ''}</div>
+          <div class="lb-meta">${escapeHtml(d.className)} — ${escapeHtml(d.school)}</div>
+        </div>
+        <div class="lb-score">${scoreVal}</div>
+      `;
+      list.appendChild(entry);
+    });
+  } catch (e) {
+    console.error('loadLeaderboard error:', e);
+    $('lbLoading').style.display = 'none';
+    $('lbEmpty').style.display = 'block';
+    $('lbEmpty').textContent = 'Błąd ładowania rankingu. Indeksy mogą być w trakcie tworzenia — spróbuj za chwilę.';
+  }
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
 
 // =============================================================================
 // BACKGROUND ANIMATION
@@ -2058,6 +2764,8 @@ function finishQuiz() {
   }
   const results = calculateResults();
   showResults(results);
+  // Save to Firestore
+  if (state.user) saveScoreToFirestore(results);
 }
 
 function calculateResults() {
@@ -2288,6 +2996,8 @@ function goHome() {
   }
   showScreen('start');
   renderBestScores();
+  renderUserBar();
+  updateOfflineBanner();
 }
 
 // =============================================================================
@@ -2337,9 +3047,38 @@ function init() {
   initStartScreen();
   initQuizNavigation();
   initKeyboard();
+  initLeaderboardUI();
 
+  // Navigation
   $('btnReviewBack').addEventListener('click', () => showScreen('results'));
   $('btnReviewHome').addEventListener('click', goHome);
+
+  // Login
+  $('btnLogin').addEventListener('click', handleLogin);
+  $('loginName').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginClass').focus(); });
+  $('loginClass').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginSchool').focus(); });
+  $('loginSchool').addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+
+  // Leaderboard
+  $('btnLeaderboard').addEventListener('click', () => showLeaderboard({ tab: 'test' }));
+  $('btnResultsLeaderboard').addEventListener('click', () => showLeaderboard({
+    tab: 'test',
+    level: state.selectedLevel,
+    year: state.mode === 'random' ? 'random' : state.selectedYear,
+    mode: state.mode,
+  }));
+
+  // Edit profile
+  $('btnEditProfile').addEventListener('click', showEditProfile);
+  $('btnEditCancel').addEventListener('click', hideEditProfile);
+  $('btnEditSave').addEventListener('click', saveEditProfile);
+
+  // Online/offline
+  window.addEventListener('online', () => { state.isOnline = true; updateOfflineBanner(); });
+  window.addEventListener('offline', () => { state.isOnline = false; updateOfflineBanner(); });
+
+  // Firebase — determines which screen to show
+  initFirebase();
 }
 
 document.addEventListener('DOMContentLoaded', init);
