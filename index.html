@@ -2649,8 +2649,8 @@ function renderOptions(task, idx) {
       btn.classList.add('reveal-correct');
     }
 
-    if (state.mode === 'exam' || (hasFeedback && state.mode !== 'practice')) {
-      if (isAnswered && hasFeedback) btn.classList.add('locked');
+    if (isAnswered && hasFeedback) {
+      btn.classList.add('locked');
     }
 
     btn.addEventListener('click', () => selectAnswer(idx, letter));
@@ -2684,12 +2684,7 @@ function selectAnswer(idx, letter) {
   const task = state.tasks[idx];
   const hasPriorFeedback = state.feedback[idx] !== undefined;
 
-  if (state.mode === 'practice' && hasPriorFeedback) {
-    delete state.feedback[idx];
-    delete state.solutionShown[idx];
-  }
-
-  if (state.mode === 'random' && hasPriorFeedback) return;
+  if ((state.mode === 'practice' || state.mode === 'random') && hasPriorFeedback) return;
 
   state.answers[idx] = letter;
 
