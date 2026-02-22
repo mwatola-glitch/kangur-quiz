@@ -18,15 +18,23 @@ service cloud.firestore {
     }
     match /scores/{scoreId} {
       allow read: if request.auth != null;
-      allow create, update: if request.auth != null
-                            && request.resource.data.uid == request.auth.uid
-                            && scoreId.matches(request.auth.uid + '_.*')
-                            && request.resource.data.score is number
-                            && request.resource.data.score >= 0
-                            && request.resource.data.score <= 200
-                            && (!exists(resource) || request.resource.data.score >= resource.data.score)
-                            && request.resource.data.level in ['maluch', 'zaczek']
-                            && request.resource.data.mode in ['exam', 'practice', 'random'];
+      allow create: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid
+                    && scoreId.matches(request.auth.uid + '_.*')
+                    && request.resource.data.score is number
+                    && request.resource.data.score >= 0
+                    && request.resource.data.score <= 200
+                    && request.resource.data.level in ['maluch', 'zaczek']
+                    && request.resource.data.mode in ['exam', 'practice', 'random'];
+      allow update: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid
+                    && scoreId.matches(request.auth.uid + '_.*')
+                    && request.resource.data.score is number
+                    && request.resource.data.score >= 0
+                    && request.resource.data.score <= 200
+                    && request.resource.data.score >= resource.data.score
+                    && request.resource.data.level in ['maluch', 'zaczek']
+                    && request.resource.data.mode in ['exam', 'practice', 'random'];
     }
     match /aggregates/{aggId} {
       allow read: if request.auth != null;
