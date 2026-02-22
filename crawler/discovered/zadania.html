@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zadania z konkursu kangur matematyczny</title>
+	<link href="/res/css/bootstrap.css" rel="stylesheet">
+	<link href="/res/css/aksjomat.css" rel="stylesheet" />
+	<link href="/res/css/header.css" rel="stylesheet" />
+	<link href="/res/css/footer.css" rel="stylesheet" />
+	<link href="/res/css/kangur.css" rel="stylesheet" />
+	<link href="/res/css/icomoon.css" rel="stylesheet" />
+	<link href="/res/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="/res/css/datatables.min.css" rel="stylesheet" />
+	<link href="/res/css/morris.css" rel="stylesheet" />
+	<link href="/res/css/jquery-ui.min.css" rel="stylesheet" />
+	<script src="/res/js/jquery-3.1.1.min.js"></script>
+	<script src="/res/js/jquery-ui.min.js"></script>
+	<script src="/res/js/basic.js"></script>
+	<script src="/res/js/moment.js"></script>
+	<script src="/res/js/pl.js"></script>
+	<!--<script src="/res/js/bootstrap-datetimepicker.min.js"></script>//-->
+	<script src="/res/js/datatables.min.js"></script>
+</head>
+<body>
+ 	<div class="container-fluid">
+	<div class="row" >
+  		<div class="col-md-10 col-md-offset-1" >
+			<nav class="navbar navbar-default bg-orange " id='navbar_cont'>
+  				<div class="container-fluid" >
+    				<div class="navbar-header">
+      					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+      					</button>    	
+    				</div>
+    				<div class="collapse navbar-collapse" id="main-menu">
+	      				<ul class="nav navbar-nav nav-blue">
+							<li><a href="/"><span class='icomoon-home'></span></a></li><li><a href="/regulamin"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-clipboard'></span>&nbsp;Regulaminy<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/regulamin"><span class='icomoon-file-text'></span>&nbsp;Regulamin serwisu</a></li><li><a href="/prywatnosc"><span class='icomoon-address-book'></span>&nbsp;Polityka poufności i bezpieczeństwa</a></li><li><a href="/regulamin_platnosci"><span class='icomoon-library'></span>&nbsp;Regulamin płatności</a></li></ul></li><li><a href="/zasady"><span class='icomoon-tree'></span>&nbsp;Zasady</a></li><li><a href="/cennik"><span class='icomoon-credit-card'></span>&nbsp;Cennik</a></li><li><a href="/instrukcja"><span class='icomoon-info'></span>&nbsp;Instrukcja</a></li><li><a href="/sklep"><span class='icomoon-cart'></span>&nbsp;Sklep</a></li><li><a href="/zadania"><span class='icomoon-calculator'></span>&nbsp;Zadania</a></li>	      	
+		  				</ul>
+	      				<ul class="nav navbar-nav navbar-right">
+			      			<li><a href="#"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-profile'></span>&nbsp;Mój profil<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/profile">Moje dane</a></li><li><a href="/order">Moje zamówienia</a></li><li><a href="/volumelicense">Licencje zbiorowe</a></li><li><a href="/wyniki">Postęp w nauce</a></li></ul></li><li><a href="/login/logout"><span class='icomoon-switch'></span>&nbsp;Wyloguj się</a></li>
+	      				</ul>
+					</div>
+ 				</div>
+			</nav>
+		</div>
+	</div>
+</div>			<div id='after_menu'>
+		</div>	
+			<div class="container-fluid ">
+ 		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+<script>window.MathJax = { MathML: { extensions: ["mml3.js", "content-mathml.js"]}};</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML"></script>
+
+<ol class="breadcrumb bg-gray" id='bc'>
+  <li><a href="/">Portal</a></li>
+  <li><a href='javascript:void(0)' onclick='zadania.start()'>Zadania</a></li>
+</ol>
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1" id='testpage_container' style='display: none'>
+			<div id='category_selector'>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<h1>Aktualnie posiadasz dostęp do testów: <span id="testlist"></span></h1>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<div class="alert alert-info"><span class="icomoon-info"></span> <strong>INFORMACJA:</strong>				
+						Poniżej znajduje się zbiór testów, do których posiadasz dostęp. 
+						Jeśli otrzymałeś/aś lub posiadasz specjalny kod dostępu do testów - kliknij w przycisk [Posiadam kod] - dotyczy to wyłącznie licencji zbiorowych.
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<button class="btn btn-primary" data-toggle="modal" data-target="#kod_modal">Posiadam kod</button>
+						<a href="/sklep"><button class="btn btn-primary">Wykup dostęp</button></a>
+					</div>
+				</div>				
+				<div id='category_list' class="row centered vspacer"></div>
+			</div>
+			
+			<div id='year_selector'>
+				<div class="row centered">
+					<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<h1><span id='current_category'></span> - wybierz rocznik (numer testu)</h1>
+					</div>
+				</div>
+				<div id='year_list' class="row centered"></div>
+			</div>
+			
+			<div id='type_selector'>
+				<div class="row centered">
+					<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<h1><span id='current_year'></span> - wybierz trening lub konkurs</h1>
+					</div>
+				</div>				
+				<div class="row centered">
+					<div class='col-md-6 col-xs-6'><button class='btn btn-primary' onclick='zadania.startPractice()'>Trening</button></div>
+					<div class='col-md-6 col-xs-6'><button class='btn btn-primary' onclick='zadania.startContest()'>Konkurs</button></div>
+				</div>
+			</div>
+			
+			<div id='contest_wait'>
+				<div class="row centered">
+					Proszę czekać, trwa wczytywanie zadań ...
+				</div>
+				<div  class="row">
+					<div class="progress">
+					    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%" id='loading_progresss'>
+					      <span class="sr-only">0% Complete</span>
+					    </div>
+  					</div>
+				</div>
+			</div>
+			
+			<div id='contest' class='fluid-container centered'>
+				<div class="row">
+					<div class='col-xs-10 col-xs-offset-1'>
+						<div class='test_flexible'>
+							<div>
+								<button class='btn btn-default' id='test_prev' onclick='zadania.prevQuestion()'><span class="icomoon-backward2"></span></button>
+							</div>
+							<div>
+								Pytanie numer: <span id='nrofq'>1</span>
+							</div>
+							<div>
+								<button class='btn btn-default' id='test_next' onclick='zadania.nextQuestion()'><span class="icomoon-forward3"></span></button>
+							</div>
+						</div>					
+					</div>
+				</div>
+				<div class="row vspacer centered" id='question'>
+					<div class="col-md-12 col-xs-12">
+						<img id="qimg" class="img_el"/>
+						<div id="qmath"></div>	
+					</div>					
+				</div>
+				<div class="row vspacer">
+					<div id="answers" class="row"></div>
+				</div>
+				<div class="row vspacer">
+					<div class="col-md-12 col-xs-12" id="navigation"></div>
+				</div>
+				<div class="row  vspacer" id='timer'>
+					<div class="col-md-12 col-xs-12">
+						Pozostały czas: <span id='timer_value'></span>
+					</div>
+				</div>
+				<div class="row  vspacer" id='finish'>
+					<div class="col-md-12">
+						<button class="btn btn-danger" onclick='zadania.finishContest()'>Zakończ konkurs</button>
+					</div>
+				</div>
+				<div class="row  vspacer" id='finish_trial'>
+					<div class="col-md-12">
+						<button class="btn btn-danger" onclick='zadania.finishTrial()'>Zakończ trening</button>
+					</div>
+				</div>
+				<div class="row  vspacer" id='trial'>
+					<div class="col-md-12">
+						<button class="btn btn-info" onclick='zadania.checkAnswer()'>Sprawdź odpowiedź</button>
+					</div>
+				</div>
+				<div class="row vspacer" id='trialA'>
+					<div class="col-md-12">
+						<span></span>
+					</div>
+					<div class='vspacer'>
+						<button class="btn btn-info" onclick='zadania.showDescription()'>Pokaż rozwiązanie zadania</button>
+					</div>
+				</div>
+				<div class="row vspacer" id='trialB'>
+					<div class="col-md-12">
+						<img class="img_el"/>
+						<div id="qmath_ans"></div>	
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id='contest_result'>
+				<div class="row">
+					Twój wynik: <span id='score'></span>
+				</div>
+				<div class="row vspacer">
+					<div class="col-md-12" id='answers_result'></div>
+				</div>
+				<div class="row vspacer">
+					<button class="btn btn-success" onclick='zadania.start()'>Powrót</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+<div id="kod_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Zrealizuj kod</h4>
+      </div>
+      <div class="modal-body">
+      	<form id='ffa' onsubmit="return checkffa()">
+        <div class="row">
+	<div class="col-md-12"><label>Kod do kateogorii</label></div>
+</div>
+<div class="row" father="kod">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='text' name="kod" required id='kod' placeholder="Proszę podać kod" value="" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Email osoby zaprasząjącej</label></div>
+</div>
+<div class="row" father="email">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='email' name="email" required id='email' placeholder="Proszę podać email osoby zapraszającej" value="" />
+		</div>
+	</div>
+</div>		      </div>
+      <div class="modal-footer">
+      	<input type='submit' style='display:none' id='ffas'/>
+        <button type="button" class="btn btn-success" onclick='$("#ffas").trigger("click")'>Zrealizuj kod</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="/res/js/zadania.js"></script>
+<script src="/res/js/jquery.tmpl.1.1.1.js"></script>
+<script src="/res/js/jszip-utils.js"></script>
+<script src="/res/js/jszip.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$("#testpage_container").show();
+		zadania.start();
+	})
+	function checkffa(){
+		var d=$("#ffa").serialize();
+		$.ajax({
+			method:"post",
+			url: UF+"tests/freeaccess",
+			data:d,
+			success:function(msg){
+				var x=JSON.parse(msg);
+				if (x.result=="OK"){
+					alert("Kod został przyjęty");
+					location.reload();
+				}else{
+					alert(x.error);
+				}
+			}
+			
+		})
+		return false;
+	}
+</script>
+
+
+<style>
+	.question_navigation{
+		  border-radius: 50px;
+		  cursor: pointer;
+		  display: inline-block;
+		  line-height: 24px;
+		  text-align: center;
+		  width: 24px;
+		  margin-bottom:8px;
+	}
+	.question_navigation_next{
+		margin-left: 4px;
+		/*margin-right: 16px;*/
+	}
+	
+	.img_el{
+		max-width: 100%;
+		
+	}
+	
+	.ans_selectable{
+		cursor: pointer;
+		padding: 0px !important;
+	}
+	
+	.ans_label{
+		margin-right: 8px;
+		border-radius: 50px;
+		display: inline-block;
+		line-height: 24px;
+		text-align: center;
+		width: 24px;
+		border: 1px solid #888;
+	}
+	.ans_label.btn-info{
+		border: 1px solid #46b8da;
+	}
+	.ans_label.btn-success{
+		border: 1px solid #4cae4c;
+	}
+	.ans_label.btn-danger{
+		border: 1px solid #d43f3a;
+	}
+	.ans_label.selected{
+		
+	}
+	.glyphicon-none:before {
+    	content: "*";
+    	color: transparent !important;
+	}
+	#navigation .col-xs-1, #navigation .col-xs-2{
+		padding: 0px !important;
+		
+	} 
+
+	.test_flexible {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+  
+</style></div></div></div></div>
+<div class="container-fluid top-margin">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="footer" class="bg-orange">&nbsp;
+				<a href="#">Wydawnictwo Aksjomat &copy 2017 - 2026</a>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="subfooter">
+				<div class="row">
+					<div class="col-xs-offset-1 col-xs-10 col-md-5 col-md-offset-1 text-grey">
+						<div class="aksjomat">
+							<div>
+								<h3>Wydawnictwo Aksjomat Piotr Nodzyński</h2>
+								<div class="logo_aksjomat_footer"><a href="#"><img src="/res/img/logo_aksjomat_footer.png"></a></div>
+								<div style='float: left'>
+								Wita Stwosza 1, 87-100 Toruń<br />
+								NIP 9561070008<br />
+								Regon 870277038<br />
+								e-mail: serwis@aksjomat.torun.pl<br/>
+								Santander 11 1090 1506 0000 0001 1451 9247<br > <br>
+								</div>
+							</div>			
+						</div>	
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="aksjomat">
+							<div>
+	
+							</div>							
+						</div>
+					</div>					
+				</div>
+   			</div>
+   		</div>
+    </div>
+</div>
+ 
+ <div class="container-fluid hidden-sm hidden-xs">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Serwis</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/regulamin">Regulamin</a></li>				<li class="link-effect"><a href="/prywatnosc">Polityka poufności i bezpieczeństwa</a></li>				<li class="link-effect"><a href="/regulamin_platnosci">Regulamin płatności</a></li>				<li class="link-effect"><a href="/zasady">Zasady</a></li>				<li class="link-effect"><a href="/instrukcja">Instrukcja</a></li>				<li class="link-effect"><a href="/cennik">Cennik</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Obsługa klienta</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/pomoc">Pomoc techniczna</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Twoje konto</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/profile">Dane osobowe</a></li>				<li class="link-effect"><a href="/order">Lista zamówień</a></li>				<li class="link-effect"><a href="/volumelicense">Licencje zbiorowe</a></li>				<li class="link-effect"><a href="/wyniki">Postępy w nauce</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Kategorie</h4>
+				 <ul>
+					 <li class="link-effect"><a href="/sklep/zaczek">&gt; Żaczek</a></li>							<li class="link-effect"><a href="/sklep/maluch">&gt; Maluch</a></li>							<li class="link-effect"><a href="/sklep/beniamin">&gt; Beniamin</a></li>							<li class="link-effect"><a href="/sklep/kadet">&gt; Kadet</a></li>							<li class="link-effect"><a href="/sklep/junior">&gt; Junior</a></li>							<li class="link-effect"><a href="/sklep/student">&gt; Student</a></li>							
+				 </ul>
+			 </div> 
+ 		</div>
+ 	</div>
+</div></div>
+	<script type="application/javascript">
+		if (window.location.hash && window.location.hash == '#_=_') {
+	        window.location.hash = '';
+    	}
+	
+		var UF="/";
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script src="/res/js/bootstrap.min.js"></script>
+	<script src="/res/js/form/form_extra.js"></script>
+	
+		
+</body>
+</html>

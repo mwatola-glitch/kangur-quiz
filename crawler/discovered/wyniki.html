@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zadania z konkursu kangur matematyczny</title>
+	<link href="/res/css/bootstrap.css" rel="stylesheet">
+	<link href="/res/css/aksjomat.css" rel="stylesheet" />
+	<link href="/res/css/header.css" rel="stylesheet" />
+	<link href="/res/css/footer.css" rel="stylesheet" />
+	<link href="/res/css/kangur.css" rel="stylesheet" />
+	<link href="/res/css/icomoon.css" rel="stylesheet" />
+	<link href="/res/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="/res/css/datatables.min.css" rel="stylesheet" />
+	<link href="/res/css/morris.css" rel="stylesheet" />
+	<link href="/res/css/jquery-ui.min.css" rel="stylesheet" />
+	<script src="/res/js/jquery-3.1.1.min.js"></script>
+	<script src="/res/js/jquery-ui.min.js"></script>
+	<script src="/res/js/basic.js"></script>
+	<script src="/res/js/moment.js"></script>
+	<script src="/res/js/pl.js"></script>
+	<!--<script src="/res/js/bootstrap-datetimepicker.min.js"></script>//-->
+	<script src="/res/js/datatables.min.js"></script>
+</head>
+<body>
+ 	<div class="container-fluid">
+	<div class="row" >
+  		<div class="col-md-10 col-md-offset-1" >
+			<nav class="navbar navbar-default bg-orange " id='navbar_cont'>
+  				<div class="container-fluid" >
+    				<div class="navbar-header">
+      					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+      					</button>    	
+    				</div>
+    				<div class="collapse navbar-collapse" id="main-menu">
+	      				<ul class="nav navbar-nav nav-blue">
+							<li><a href="/"><span class='icomoon-home'></span></a></li><li><a href="/regulamin"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-clipboard'></span>&nbsp;Regulaminy<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/regulamin"><span class='icomoon-file-text'></span>&nbsp;Regulamin serwisu</a></li><li><a href="/prywatnosc"><span class='icomoon-address-book'></span>&nbsp;Polityka poufności i bezpieczeństwa</a></li><li><a href="/regulamin_platnosci"><span class='icomoon-library'></span>&nbsp;Regulamin płatności</a></li></ul></li><li><a href="/zasady"><span class='icomoon-tree'></span>&nbsp;Zasady</a></li><li><a href="/cennik"><span class='icomoon-credit-card'></span>&nbsp;Cennik</a></li><li><a href="/instrukcja"><span class='icomoon-info'></span>&nbsp;Instrukcja</a></li><li><a href="/sklep"><span class='icomoon-cart'></span>&nbsp;Sklep</a></li><li><a href="/zadania"><span class='icomoon-calculator'></span>&nbsp;Zadania</a></li>	      	
+		  				</ul>
+	      				<ul class="nav navbar-nav navbar-right">
+			      			<li><a href="#"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-profile'></span>&nbsp;Mój profil<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/profile">Moje dane</a></li><li><a href="/order">Moje zamówienia</a></li><li><a href="/volumelicense">Licencje zbiorowe</a></li><li><a href="/wyniki">Postęp w nauce</a></li></ul></li><li><a href="/login/logout"><span class='icomoon-switch'></span>&nbsp;Wyloguj się</a></li>
+	      				</ul>
+					</div>
+ 				</div>
+			</nav>
+		</div>
+	</div>
+</div>			<div id='after_menu'>
+		</div>	
+			<div class="container-fluid ">
+ 		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+<ol class="breadcrumb bg-gray">
+  <li><a href="/">Portal</a></li>
+  <li class="active">Postępy w nauce</li>
+</ol>
+<div class="container-fluid main">
+	<div class="row">	
+		<div class="col-md-10 col-md-offset-1">
+			<h1>Postępy w nauce</h1>
+			<h2 style="text-gray">Wybierz kategorię</h2>
+								<div class='col-md-3 col-xs-3 vspacer'><a href='/wyniki/zaczek'><button class="btn btn-primary">Żaczek</button></a></div>		</div>
+	</div>
+	<div class="row vspacer">
+		<div class="col-md-10 col-md-offset-1">
+			<h2 class="text-grey">Ogólne wyniki</h2>
+<table class="table table-hover table-striped">
+	<tbody>
+		<tr>
+			<th>Czas spędzony na rozwiązywaniu zadań</th>
+			<td>0 s</td>
+		</tr>
+		<tr>
+			<th>Minimalna liczba punktów</th>
+			<td class="danger">18,000</td>
+		</tr>
+		<tr>
+			<th>Maksymalna liczba punktów</th>
+			<td class="success">18,000</td>
+		</tr>
+		<tr>
+			<th>Średnia liczba punktów:</th>
+			<td>18,000</td>
+		</tr>
+		<tr>
+			<th>Liczba podejść do testów</th>
+			<td>2</td>
+		</tr>		
+		<tr>
+			<th>Liczba oddanych odpowiedzi</th>
+			<td>0</td>
+		</tr>
+		<tr>
+			<th>Liczba poprawnych odpowiedzi</th>
+			<td class="success">0</td>
+		</tr>
+		<tr>
+			<th>Liczba błędnych odpowiedzi</th>
+			<td class="danger">0</td>
+		</tr>	
+	<tbody>
+</table>		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5 col-md-offset-1">
+			<div class="panel panel-default panel-primary">
+				<div class="panel-heading panel-title"><strong>Czas spędzony w kategoriach</strong></div>
+				<div class="panel-body ">
+					<div class="row">								
+						<div id='g_cat'></div>
+					</div>										
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="panel panel-default panel-primary">
+				<div class="panel-heading panel-title"><strong>Uzyskane wyniki</strong></div>
+				<div class="panel-body ">
+					<div class="row">								
+						<div id='g_avg'></div>
+					</div>										
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+			<div class="col-md-5 col-md-offset-1">
+			<div class="panel panel-default panel-primary">
+				<div class="panel-heading panel-title"><strong>Liczba podejść do testów</strong></div>
+				<div class="panel-body ">
+					<div class="row">								
+						<div id='g_att'></div>
+					</div>										
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="panel panel-default panel-primary">
+				<div class="panel-heading panel-title"><strong>Oddane odpowiedzi</strong></div>
+				<div class="panel-body ">
+					<div class="row">								
+						<div id='g_ans'></div>
+					</div>										
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<script>
+$(document).ready(function (){
+	 Morris.Bar({
+	  element: 'g_cat',
+	  data: [{"n":"\u017baczek","v":"0"}],
+	  xkey: 'n',
+	  ykeys: ['v'],
+	  hideHover: 'auto',
+	  labels:['[s]'],
+	  resize: true
+	});
+	
+	Morris.Bar({
+	  element: 'g_ans',
+	  data: [{"n":"\u017baczek","p":"0","ne":"0"}],
+	  xkey: 'n',
+	  ykeys: ['ne','p'],
+	  hideHover: 'auto',
+	  labels:['Odpowiedzi niepoprawne','Odpowiedzi poprawne'],
+	  resize: true,
+	  stacked: true,
+	   barColors: ["#d9534f","#5cb85c"],
+	});
+	
+	Morris.Bar({
+	  element: 'g_att',
+	  data: [{"n":"\u017baczek","a":2}],
+	  xkey: 'n',
+	  ykeys: ['a'],
+	  hideHover: 'auto',
+	  labels:['Liczba podejść'],
+	  resize: true,
+	});
+	
+	Morris.Bar({
+	  element: 'g_avg',
+	  data: [{"n":"\u017baczek","a":"18.0000000","mi":"18.000","ma":"18.000"}],
+	  xkey: 'n',
+	  ykeys: ['mi',"a","ma"],
+	  hideHover: 'auto',
+	  labels:["Minimalna liczba punktów","Średnia liczba punktów", "Maksymalna liczba punktów"],
+	  resize: true,
+	  barColors: ["#d9534f","#286090","#5cb85c"],
+	});
+	
+});
+</script>
+<script src="/res/js/morris.min.js"></script>
+<script src="/res/js/raphael.min.js"></script></div></div></div></div>
+<div class="container-fluid top-margin">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="footer" class="bg-orange">&nbsp;
+				<a href="#">Wydawnictwo Aksjomat &copy 2017 - 2026</a>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="subfooter">
+				<div class="row">
+					<div class="col-xs-offset-1 col-xs-10 col-md-5 col-md-offset-1 text-grey">
+						<div class="aksjomat">
+							<div>
+								<h3>Wydawnictwo Aksjomat Piotr Nodzyński</h2>
+								<div class="logo_aksjomat_footer"><a href="#"><img src="/res/img/logo_aksjomat_footer.png"></a></div>
+								<div style='float: left'>
+								Wita Stwosza 1, 87-100 Toruń<br />
+								NIP 9561070008<br />
+								Regon 870277038<br />
+								e-mail: serwis@aksjomat.torun.pl<br/>
+								Santander 11 1090 1506 0000 0001 1451 9247<br > <br>
+								</div>
+							</div>			
+						</div>	
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="aksjomat">
+							<div>
+	
+							</div>							
+						</div>
+					</div>					
+				</div>
+   			</div>
+   		</div>
+    </div>
+</div>
+ 
+ <div class="container-fluid hidden-sm hidden-xs">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Serwis</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/regulamin">Regulamin</a></li>				<li class="link-effect"><a href="/prywatnosc">Polityka poufności i bezpieczeństwa</a></li>				<li class="link-effect"><a href="/regulamin_platnosci">Regulamin płatności</a></li>				<li class="link-effect"><a href="/zasady">Zasady</a></li>				<li class="link-effect"><a href="/instrukcja">Instrukcja</a></li>				<li class="link-effect"><a href="/cennik">Cennik</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Obsługa klienta</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/pomoc">Pomoc techniczna</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Twoje konto</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/profile">Dane osobowe</a></li>				<li class="link-effect"><a href="/order">Lista zamówień</a></li>				<li class="link-effect"><a href="/volumelicense">Licencje zbiorowe</a></li>				<li class="link-effect"><a href="/wyniki">Postępy w nauce</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Kategorie</h4>
+				 <ul>
+					 <li class="link-effect"><a href="/sklep/zaczek">&gt; Żaczek</a></li>							<li class="link-effect"><a href="/sklep/maluch">&gt; Maluch</a></li>							<li class="link-effect"><a href="/sklep/beniamin">&gt; Beniamin</a></li>							<li class="link-effect"><a href="/sklep/kadet">&gt; Kadet</a></li>							<li class="link-effect"><a href="/sklep/junior">&gt; Junior</a></li>							<li class="link-effect"><a href="/sklep/student">&gt; Student</a></li>							
+				 </ul>
+			 </div> 
+ 		</div>
+ 	</div>
+</div></div>
+	<script type="application/javascript">
+		if (window.location.hash && window.location.hash == '#_=_') {
+	        window.location.hash = '';
+    	}
+	
+		var UF="/";
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script src="/res/js/bootstrap.min.js"></script>
+	<script src="/res/js/form/form_extra.js"></script>
+	
+		
+</body>
+</html>

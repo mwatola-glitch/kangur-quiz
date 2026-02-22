@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Temp
+*.tmp
+
+# Legacy data (old scan-based version)
+data/
+kangur_data_compact.json

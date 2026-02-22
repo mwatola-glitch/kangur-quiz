@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zadania z konkursu kangur matematyczny</title>
+	<link href="/res/css/bootstrap.css" rel="stylesheet">
+	<link href="/res/css/aksjomat.css" rel="stylesheet" />
+	<link href="/res/css/header.css" rel="stylesheet" />
+	<link href="/res/css/footer.css" rel="stylesheet" />
+	<link href="/res/css/kangur.css" rel="stylesheet" />
+	<link href="/res/css/icomoon.css" rel="stylesheet" />
+	<link href="/res/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="/res/css/datatables.min.css" rel="stylesheet" />
+	<link href="/res/css/morris.css" rel="stylesheet" />
+	<link href="/res/css/jquery-ui.min.css" rel="stylesheet" />
+	<script src="/res/js/jquery-3.1.1.min.js"></script>
+	<script src="/res/js/jquery-ui.min.js"></script>
+	<script src="/res/js/basic.js"></script>
+	<script src="/res/js/moment.js"></script>
+	<script src="/res/js/pl.js"></script>
+	<!--<script src="/res/js/bootstrap-datetimepicker.min.js"></script>//-->
+	<script src="/res/js/datatables.min.js"></script>
+</head>
+<body>
+ 	<div class="container-fluid">
+	<div class="row" >
+  		<div class="col-md-10 col-md-offset-1" >
+			<nav class="navbar navbar-default bg-orange " id='navbar_cont'>
+  				<div class="container-fluid" >
+    				<div class="navbar-header">
+      					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+      					</button>    	
+    				</div>
+    				<div class="collapse navbar-collapse" id="main-menu">
+	      				<ul class="nav navbar-nav nav-blue">
+							<li><a href="/"><span class='icomoon-home'></span></a></li><li><a href="/regulamin"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-clipboard'></span>&nbsp;Regulaminy<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/regulamin"><span class='icomoon-file-text'></span>&nbsp;Regulamin serwisu</a></li><li><a href="/prywatnosc"><span class='icomoon-address-book'></span>&nbsp;Polityka poufności i bezpieczeństwa</a></li><li><a href="/regulamin_platnosci"><span class='icomoon-library'></span>&nbsp;Regulamin płatności</a></li></ul></li><li><a href="/zasady"><span class='icomoon-tree'></span>&nbsp;Zasady</a></li><li><a href="/cennik"><span class='icomoon-credit-card'></span>&nbsp;Cennik</a></li><li><a href="/instrukcja"><span class='icomoon-info'></span>&nbsp;Instrukcja</a></li><li><a href="/sklep"><span class='icomoon-cart'></span>&nbsp;Sklep</a></li><li><a href="/zadania"><span class='icomoon-calculator'></span>&nbsp;Zadania</a></li>	      	
+		  				</ul>
+	      				<ul class="nav navbar-nav navbar-right">
+			      			<li><a href="#"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-profile'></span>&nbsp;Mój profil<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/profile">Moje dane</a></li><li><a href="/order">Moje zamówienia</a></li><li><a href="/volumelicense">Licencje zbiorowe</a></li><li><a href="/wyniki">Postęp w nauce</a></li></ul></li><li><a href="/login/logout"><span class='icomoon-switch'></span>&nbsp;Wyloguj się</a></li>
+	      				</ul>
+					</div>
+ 				</div>
+			</nav>
+		</div>
+	</div>
+</div>			<div id='after_menu'>
+		</div>	
+			<div class="container-fluid ">
+ 		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+<ol class="breadcrumb bg-gray">
+	<li><a href="/">Portal</a></li>
+	<li class="active">Edycja profilu</li>
+</ol>
+<div class="container-fluid main" id='register_div'>
+	<form action="/profile/do_changepassword" method="post" id="userdata_form" onsubmit='return check_password()'>
+			<div class='row'>
+		<div class='col-md-10 col-md-offset-1'>
+  			<h1>Zmiana hasła</h1>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-10 col-md-offset-1'>
+	<div class="row">
+	<div class="col-md-12"><label>Aktualne hasło:</label></div>
+</div>
+<div class="row" father="old_pass">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='password' name="old_pass" required id='old_pass' placeholder="Proszę podać aktualne hasło" value="" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Nowe hasło: (minimum 6 znaków)</label></div>
+</div>
+<div class="row" father="pass1">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='password' name="pass1" required id='pass1' placeholder="Proszę podać nowe hasło" value="" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Powtórz nowe hasło:</label></div>
+</div>
+<div class="row" father="pass2">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='password' name="pass2" required id='pass2' placeholder="Proszę powtórzyć nowe hasło" value="" />
+		</div>
+	</div>
+</div>				</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 vspacer">
+			<input type="submit" id='fsbut_pass' style='display: none' >
+			<input type="button" class="btn btn-primary" value="Zmień hasło" onClick="start_changepassword()">
+		</div>
+	</div>
+		
+</form>
+<form action="/profile/do_changeemail" method="post" id="useremail_form">
+	<div class='row'>
+		<div class='col-md-10 col-md-offset-1'>
+  			<h1>Zmiana adresu email</h1>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-10 col-md-offset-1'>
+	<div class="row">
+	<div class="col-md-12"><label>Adres email:</label></div>
+</div>
+<div class="row" father="email">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='email' name="email" required id='email' placeholder="Proszę podać adres email" value="mwatola@gmail.com" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Aktualne hasło:</label></div>
+</div>
+<div class="row" father="old_pass">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='password' name="old_pass" required id='old_pass' placeholder="Proszę podać aktualne hasło" value="" />
+		</div>
+	</div>
+</div>				</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 vspacer">
+			<input type="submit" id='fsbut_email' style='display: none' >
+			<input type="button" class="btn btn-primary" value="Zmień adres email" onClick="start_changeemail()">
+		</div>
+	</div>
+</form>
+<div class='row'>
+	<div class='col-md-10 col-md-offset-1'>
+		<h1>Dane osobowe</h1>
+	</div>
+</div>
+<form action="/profile/do_update" method="post" id="userdata_form" onsubmit='return check_form()'>	
+<div class='row'>
+	<div class='col-md-10 col-md-offset-1'>
+<div class="row">
+	<div class="col-md-12"><label>Imię:</label></div>
+</div>
+<div class="row" father="name">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='text' name="name" required id='name' placeholder="Proszę podać imię" value="MAREK" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Nazwisko:</label></div>
+</div>
+<div class="row" father="lastname">
+	<div class="col-md-12">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+			<input class="form-control form-extra" type='text' name="lastname" required id='lastname' placeholder="Proszę podać nazwisko" value="WATOLA" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Ulica; numer mieszkania, domu:</label></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<input class="form-control" type='text' name="street" id='street' placeholder="Proszę podać nazwę ulicy, numer domu oraz mieszkania" value="UL. SŁAWINKOWSKA 71F/2" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Miasto:</label></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<input class="form-control" type='text' name="city" id='city' placeholder="Proszę podać nazwę miasta" value="LUBLIN" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Kod pocztowy:</label></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<input class="form-control" type='text' name="postal_code" id='postal_code' placeholder="Proszę podać kod pocztowy" value="20-810" />
+		</div>
+	</div>
+</div>		<div class="row">	
+	<div class="col-md-12"><label>Kraj:</label></div>
+</div>
+<div class="row" >
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<button class="btn btn-default dropdown-toggle" type="button" id="country_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	  			<span class="sel_val">Polska</span>
+	   		 	<span class="caret"></span>
+	  		</button>
+	  		<input type="hidden" class="form-changed-overwrite"  name="country" id="country" value="Poland" form-icon="form-control-feedback2"/>
+	  		<ul class="dropdown-menu" aria-labelledby="country_dropdown"><li><a href='javascript:void(0)' class='select_opt' field='country' val='Afghanistan'>Afghanistan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Albania'>Albania</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Algeria'>Algeria</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='American Samoa'>American Samoa</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Andorra'>Andorra</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Angola'>Angola</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Anguilla'>Anguilla</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Antarctica'>Antarctica</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Antigua and Barbuda'>Antigua and Barbuda</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Argentina'>Argentina</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Armenia'>Armenia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Aruba'>Aruba</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Australia'>Australia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Austria'>Austria</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Azerbaijan'>Azerbaijan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bahamas'>Bahamas</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bahrain'>Bahrain</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bangladesh'>Bangladesh</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Barbados'>Barbados</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Belarus'>Belarus</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Belgium'>Belgium</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Belize'>Belize</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Benin'>Benin</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bermuda'>Bermuda</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bhutan'>Bhutan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bolivia'>Bolivia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bosnia and Herzegovina'>Bosnia and Herzegovina</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Botswana'>Botswana</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bouvet Island'>Bouvet Island</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Brazil'>Brazil</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='British Indian Ocean Territory'>British Indian Ocean Territory</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Brunei Darussalam'>Brunei Darussalam</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Bulgaria'>Bulgaria</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Burkina Faso'>Burkina Faso</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Burundi'>Burundi</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cambodia'>Cambodia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cameroon'>Cameroon</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Canada'>Canada</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cape Verde'>Cape Verde</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cayman Islands'>Cayman Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Central African Republic'>Central African Republic</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Chad'>Chad</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Chile'>Chile</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='China'>China</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Christmas Island'>Christmas Island</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cocos (Keeling) Islands'>Cocos (Keeling) Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Colombia'>Colombia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Comoros'>Comoros</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Congo'>Congo</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Congo, The Democratic Republic of The'>Congo, The Democratic Republic of The</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cook Islands'>Cook Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Costa Rica'>Costa Rica</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cote D'ivoire'>Cote D'ivoire</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Croatia'>Croatia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cuba'>Cuba</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Cyprus'>Cyprus</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Czech Republic'>Czech Republic</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Denmark'>Denmark</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Djibouti'>Djibouti</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Dominica'>Dominica</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Dominican Republic'>Dominican Republic</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Ecuador'>Ecuador</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Egypt'>Egypt</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='El Salvador'>El Salvador</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Equatorial Guinea'>Equatorial Guinea</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Eritrea'>Eritrea</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Estonia'>Estonia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Ethiopia'>Ethiopia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Falkland Islands (Malvinas)'>Falkland Islands (Malvinas)</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Faroe Islands'>Faroe Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Fiji'>Fiji</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Finland'>Finland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='France'>France</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='French Guiana'>French Guiana</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='French Polynesia'>French Polynesia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='French Southern Territories'>French Southern Territories</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Gabon'>Gabon</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Gambia'>Gambia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Georgia'>Georgia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Germany'>Germany</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Ghana'>Ghana</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Gibraltar'>Gibraltar</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Greece'>Greece</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Greenland'>Greenland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Grenada'>Grenada</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guadeloupe'>Guadeloupe</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guam'>Guam</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guatemala'>Guatemala</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guinea'>Guinea</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guinea-bissau'>Guinea-bissau</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Guyana'>Guyana</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Haiti'>Haiti</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Heard Island and Mcdonald Islands'>Heard Island and Mcdonald Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Holy See (Vatican City State)'>Holy See (Vatican City State)</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Honduras'>Honduras</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Hong Kong'>Hong Kong</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Hungary'>Hungary</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Iceland'>Iceland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='India'>India</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Indonesia'>Indonesia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Iran, Islamic Republic of'>Iran, Islamic Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Iraq'>Iraq</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Ireland'>Ireland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Israel'>Israel</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Italy'>Italy</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Jamaica'>Jamaica</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Japan'>Japan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Jordan'>Jordan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Kazakhstan'>Kazakhstan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Kenya'>Kenya</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Kiribati'>Kiribati</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Korea, Democratic People's Republic of'>Korea, Democratic People's Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Korea, Republic of'>Korea, Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Kuwait'>Kuwait</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Kyrgyzstan'>Kyrgyzstan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Lao People's Democratic Republic'>Lao People's Democratic Republic</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Latvia'>Latvia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Lebanon'>Lebanon</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Lesotho'>Lesotho</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Liberia'>Liberia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Libyan Arab Jamahiriya'>Libyan Arab Jamahiriya</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Liechtenstein'>Liechtenstein</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Lithuania'>Lithuania</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Luxembourg'>Luxembourg</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Macao'>Macao</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Macedonia, The Former Yugoslav Republic of'>Macedonia, The Former Yugoslav Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Madagascar'>Madagascar</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Malawi'>Malawi</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Malaysia'>Malaysia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Maldives'>Maldives</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mali'>Mali</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Malta'>Malta</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Marshall Islands'>Marshall Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Martinique'>Martinique</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mauritania'>Mauritania</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mauritius'>Mauritius</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mayotte'>Mayotte</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mexico'>Mexico</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Micronesia, Federated States of'>Micronesia, Federated States of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Moldova, Republic of'>Moldova, Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Monaco'>Monaco</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mongolia'>Mongolia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Montserrat'>Montserrat</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Morocco'>Morocco</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Mozambique'>Mozambique</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Myanmar'>Myanmar</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Namibia'>Namibia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Nauru'>Nauru</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Nepal'>Nepal</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Netherlands'>Netherlands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Netherlands Antilles'>Netherlands Antilles</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='New Caledonia'>New Caledonia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='New Zealand'>New Zealand</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Nicaragua'>Nicaragua</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Niger'>Niger</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Nigeria'>Nigeria</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Niue'>Niue</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Norfolk Island'>Norfolk Island</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Northern Mariana Islands'>Northern Mariana Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Norway'>Norway</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Oman'>Oman</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Pakistan'>Pakistan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Palau'>Palau</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Palestinian Territory, Occupied'>Palestinian Territory, Occupied</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Panama'>Panama</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Papua New Guinea'>Papua New Guinea</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Paraguay'>Paraguay</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Peru'>Peru</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Philippines'>Philippines</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Pitcairn'>Pitcairn</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Poland'>Polska</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Portugal'>Portugal</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Puerto Rico'>Puerto Rico</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Qatar'>Qatar</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Reunion'>Reunion</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Romania'>Romania</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Russian Federation'>Russian Federation</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Rwanda'>Rwanda</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saint Helena'>Saint Helena</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saint Kitts and Nevis'>Saint Kitts and Nevis</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saint Lucia'>Saint Lucia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saint Pierre and Miquelon'>Saint Pierre and Miquelon</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saint Vincent and The Grenadines'>Saint Vincent and The Grenadines</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Samoa'>Samoa</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='San Marino'>San Marino</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Sao Tome and Principe'>Sao Tome and Principe</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Saudi Arabia'>Saudi Arabia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Senegal'>Senegal</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Serbia and Montenegro'>Serbia and Montenegro</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Seychelles'>Seychelles</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Sierra Leone'>Sierra Leone</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Singapore'>Singapore</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Slovakia'>Slovakia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Slovenia'>Slovenia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Solomon Islands'>Solomon Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Somalia'>Somalia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='South Africa'>South Africa</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='South Georgia and The South Sandwich Islands'>South Georgia and The South Sandwich Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Spain'>Spain</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Sri Lanka'>Sri Lanka</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Sudan'>Sudan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Suriname'>Suriname</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Svalbard and Jan Mayen'>Svalbard and Jan Mayen</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Swaziland'>Swaziland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Sweden'>Sweden</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Switzerland'>Switzerland</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Syrian Arab Republic'>Syrian Arab Republic</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Taiwan, Province of China'>Taiwan, Province of China</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tajikistan'>Tajikistan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tanzania, United Republic of'>Tanzania, United Republic of</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Thailand'>Thailand</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Timor-leste'>Timor-leste</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Togo'>Togo</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tokelau'>Tokelau</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tonga'>Tonga</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Trinidad and Tobago'>Trinidad and Tobago</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tunisia'>Tunisia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Turkey'>Turkey</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Turkmenistan'>Turkmenistan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Turks and Caicos Islands'>Turks and Caicos Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Tuvalu'>Tuvalu</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Uganda'>Uganda</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Ukraine'>Ukraine</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='United Arab Emirates'>United Arab Emirates</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='United Kingdom'>United Kingdom</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='United States'>United States</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='United States Minor Outlying Islands'>United States Minor Outlying Islands</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Uruguay'>Uruguay</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Uzbekistan'>Uzbekistan</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Vanuatu'>Vanuatu</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Venezuela'>Venezuela</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Viet Nam'>Viet Nam</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Virgin Islands, British'>Virgin Islands, British</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Virgin Islands, U.S.'>Virgin Islands, U.S.</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Wallis and Futuna'>Wallis and Futuna</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Western Sahara'>Western Sahara</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Yemen'>Yemen</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Zambia'>Zambia</a></li><li><a href='javascript:void(0)' class='select_opt' field='country' val='Zimbabwe'>Zimbabwe</a></li> 		 </ul>
+ 	 </div>
+  </div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>Numer telefonu:</label></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<input class="form-control" type='text' name="telephone" id='telephone' placeholder="Proszę podać numer telefonu" value="881591590" />
+		</div>
+	</div>
+</div>		<div class="row">
+	<div class="col-md-12"><label>NIP / PESEL:</label></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="input-group-one-element">
+			<input class="form-control" type='text' name="nip" id='nip' placeholder="Proszę podać NIP lub PESEL" value="" />
+		</div>
+	</div>
+</div>		
+		
+</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 vspacer">
+		<input type="submit" id='fsbut' style='display: none' >
+		<input type="button" class="btn btn-primary" value="Aktualizuj profil" onClick="start_profileupdate()">
+	</div>
+</div>
+		
+	</form>
+</div>
+<script src="/res/js/profile.js"></script>
+<script src="/res/js/form/form_extra.js"></script>
+</div></div></div></div>
+<div class="container-fluid top-margin">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="footer" class="bg-orange">&nbsp;
+				<a href="#">Wydawnictwo Aksjomat &copy 2017 - 2026</a>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="subfooter">
+				<div class="row">
+					<div class="col-xs-offset-1 col-xs-10 col-md-5 col-md-offset-1 text-grey">
+						<div class="aksjomat">
+							<div>
+								<h3>Wydawnictwo Aksjomat Piotr Nodzyński</h2>
+								<div class="logo_aksjomat_footer"><a href="#"><img src="/res/img/logo_aksjomat_footer.png"></a></div>
+								<div style='float: left'>
+								Wita Stwosza 1, 87-100 Toruń<br />
+								NIP 9561070008<br />
+								Regon 870277038<br />
+								e-mail: serwis@aksjomat.torun.pl<br/>
+								Santander 11 1090 1506 0000 0001 1451 9247<br > <br>
+								</div>
+							</div>			
+						</div>	
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="aksjomat">
+							<div>
+	
+							</div>							
+						</div>
+					</div>					
+				</div>
+   			</div>
+   		</div>
+    </div>
+</div>
+ 
+ <div class="container-fluid hidden-sm hidden-xs">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Serwis</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/regulamin">Regulamin</a></li>				<li class="link-effect"><a href="/prywatnosc">Polityka poufności i bezpieczeństwa</a></li>				<li class="link-effect"><a href="/regulamin_platnosci">Regulamin płatności</a></li>				<li class="link-effect"><a href="/zasady">Zasady</a></li>				<li class="link-effect"><a href="/instrukcja">Instrukcja</a></li>				<li class="link-effect"><a href="/cennik">Cennik</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Obsługa klienta</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/pomoc">Pomoc techniczna</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Twoje konto</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/profile">Dane osobowe</a></li>				<li class="link-effect"><a href="/order">Lista zamówień</a></li>				<li class="link-effect"><a href="/volumelicense">Licencje zbiorowe</a></li>				<li class="link-effect"><a href="/wyniki">Postępy w nauce</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Kategorie</h4>
+				 <ul>
+					 <li class="link-effect"><a href="/sklep/zaczek">&gt; Żaczek</a></li>							<li class="link-effect"><a href="/sklep/maluch">&gt; Maluch</a></li>							<li class="link-effect"><a href="/sklep/beniamin">&gt; Beniamin</a></li>							<li class="link-effect"><a href="/sklep/kadet">&gt; Kadet</a></li>							<li class="link-effect"><a href="/sklep/junior">&gt; Junior</a></li>							<li class="link-effect"><a href="/sklep/student">&gt; Student</a></li>							
+				 </ul>
+			 </div> 
+ 		</div>
+ 	</div>
+</div></div>
+	<script type="application/javascript">
+		if (window.location.hash && window.location.hash == '#_=_') {
+	        window.location.hash = '';
+    	}
+	
+		var UF="/";
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script src="/res/js/bootstrap.min.js"></script>
+	<script src="/res/js/form/form_extra.js"></script>
+	
+		
+</body>
+</html>

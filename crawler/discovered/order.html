@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zadania z konkursu kangur matematyczny</title>
+	<link href="/res/css/bootstrap.css" rel="stylesheet">
+	<link href="/res/css/aksjomat.css" rel="stylesheet" />
+	<link href="/res/css/header.css" rel="stylesheet" />
+	<link href="/res/css/footer.css" rel="stylesheet" />
+	<link href="/res/css/kangur.css" rel="stylesheet" />
+	<link href="/res/css/icomoon.css" rel="stylesheet" />
+	<link href="/res/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="/res/css/datatables.min.css" rel="stylesheet" />
+	<link href="/res/css/morris.css" rel="stylesheet" />
+	<link href="/res/css/jquery-ui.min.css" rel="stylesheet" />
+	<script src="/res/js/jquery-3.1.1.min.js"></script>
+	<script src="/res/js/jquery-ui.min.js"></script>
+	<script src="/res/js/basic.js"></script>
+	<script src="/res/js/moment.js"></script>
+	<script src="/res/js/pl.js"></script>
+	<!--<script src="/res/js/bootstrap-datetimepicker.min.js"></script>//-->
+	<script src="/res/js/datatables.min.js"></script>
+</head>
+<body>
+ 	<div class="container-fluid">
+	<div class="row" >
+  		<div class="col-md-10 col-md-offset-1" >
+			<nav class="navbar navbar-default bg-orange " id='navbar_cont'>
+  				<div class="container-fluid" >
+    				<div class="navbar-header">
+      					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+      					</button>    	
+    				</div>
+    				<div class="collapse navbar-collapse" id="main-menu">
+	      				<ul class="nav navbar-nav nav-blue">
+							<li><a href="/"><span class='icomoon-home'></span></a></li><li><a href="/regulamin"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-clipboard'></span>&nbsp;Regulaminy<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/regulamin"><span class='icomoon-file-text'></span>&nbsp;Regulamin serwisu</a></li><li><a href="/prywatnosc"><span class='icomoon-address-book'></span>&nbsp;Polityka poufności i bezpieczeństwa</a></li><li><a href="/regulamin_platnosci"><span class='icomoon-library'></span>&nbsp;Regulamin płatności</a></li></ul></li><li><a href="/zasady"><span class='icomoon-tree'></span>&nbsp;Zasady</a></li><li><a href="/cennik"><span class='icomoon-credit-card'></span>&nbsp;Cennik</a></li><li><a href="/instrukcja"><span class='icomoon-info'></span>&nbsp;Instrukcja</a></li><li><a href="/sklep"><span class='icomoon-cart'></span>&nbsp;Sklep</a></li><li><a href="/zadania"><span class='icomoon-calculator'></span>&nbsp;Zadania</a></li>	      	
+		  				</ul>
+	      				<ul class="nav navbar-nav navbar-right">
+			      			<li><a href="#"class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='icomoon-profile'></span>&nbsp;Mój profil<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/profile">Moje dane</a></li><li><a href="/order">Moje zamówienia</a></li><li><a href="/volumelicense">Licencje zbiorowe</a></li><li><a href="/wyniki">Postęp w nauce</a></li></ul></li><li><a href="/login/logout"><span class='icomoon-switch'></span>&nbsp;Wyloguj się</a></li>
+	      				</ul>
+					</div>
+ 				</div>
+			</nav>
+		</div>
+	</div>
+</div>			<div id='after_menu'>
+		</div>	
+			<div class="container-fluid ">
+ 		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+<ol class="breadcrumb bg-gray">
+	<li><a href="/">Portal</a></li>
+	<li><a href="#">Sklep</a></li>
+	<li class="active">Twoje zamówienia</li>
+</ol>
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1"><h1>Twoje zamówienia</h1></div>
+	</div>
+<form id='zamowienie_filtr' class='user_filter'>
+		<div class="row">
+			<div class='col-md-2 col-md-offset-1'>
+					<label>Status zamówienia</label>
+			</div>
+			<div class='col-md-2'>
+				<button class="btn btn-default dropdown-toggle" type="button" id="status_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="sel_val">dowolne</span>
+    				<span class="caret"></span>
+    			</button>
+    		<input type="hidden" name="status" id="status" value="0" form-icon="form-control-feedback2"/>
+		    <ul class="dropdown-menu" aria-labelledby="status_dropdown">
+			<li><a href='javascript:void(0)' class='select_opt' field='status' val='0'>dowolne</a></li><li><a href='javascript:void(0)' class='select_opt' field='status' val='1'>złożone</a></li><li><a href='javascript:void(0)' class='select_opt' field='status' val='2'>opłacone</a></li><li><a href='javascript:void(0)' class='select_opt' field='status' val='-1'>anulowane</a></li><li><a href='javascript:void(0)' class='select_opt' field='status' val='-2'>odrzucone</a></li><li><a href='javascript:void(0)' class='select_opt' field='status' val='100'>dostęp GRATIS</a></li>    		</ul>
+		
+			</div>
+		</div>
+	</form>
+	<div class="row vspacer">
+		<div class="col-md-10 col-md-offset-1">
+			<table id='order_list' class="table table-striped table-hover nowrap table-full-width">
+					<thead>
+						<th>Numer zamówienia</th>
+						<th>Status</th>
+						<th>Data zamówienia</th>
+						<th>Kwota</th>
+						<th></th>
+					</thead>
+				<tbody>
+												<tr>
+								<td>AevXsfUc</td>
+								<td>opłacone</td>
+								<td>2026-02-21 16:31:08</td>
+								<td>3,69 zł</td>
+								<td class="icons">
+									<a href="order/show/AevXsfUc"><span class="glyphicon glyphicon-info-sign " data-toggle='tooltip' title='pokaż zamówienie'></span></a>									<a href="javascript:void(0)" data-toggle='tooltip' title='brak możliwości anulowania zamówienia'><span class="glyphicon glyphicon-remove icon-disabled"></span></a>								</td>
+							</tr>				</tbody>
+							</table>
+		</div>
+	</div>
+</div>
+<script>
+
+	var table=null;
+	var ostatus={"AevXsfUc":2};
+	
+	function cancel_order(number){
+    	if (!confirm("Czy anulować zamówienie?")){
+    		return false;
+    	}
+    	
+    	document.location="/order/cancel/"+number;
+    }
+    
+    
+
+
+	$(document).ready(function (){
+		table=$('#order_list').DataTable(
+    	{
+    		language:{
+    			url:'/res/js/datatable.pl.json'
+    		},
+    		stateSave: true,
+    		responsive: true,
+    		"columnDefs": [
+                {"targets": -1, responsivePriority: 1,"orderable": false, width: 64}
+			],
+			"order": [[ 3, "desc" ]],
+			"fnInitComplete":function(){				
+				if (!window.matchMedia || (window.matchMedia("(min-width: 960px)").matches)) {
+					$('[data-toggle="tooltip"]').tooltip();
+					
+				}	
+			}			
+    	});
+    	
+    	$.fn.dataTable.ext.search.push(
+    		function( settings, data, dataIndex ) {
+    			var stat=$("#status").val();
+		    	if (stat!=0){
+		    		if (ostatus[data[0]]!=stat){
+		    			return false;
+		    		}
+		    	}
+		    	
+       			return true;
+    	});
+    	
+    	
+    	
+    	$("#status").change(reloadTable);
+    	
+    	
+    	
+    });
+    
+    function reloadTable(){
+		$.ajax({
+				url:UF+"order/update_orderlist_filter",
+				data:{
+					status:$("#status").val(),
+				},
+				method:"post",
+				error: function (){alert ("FIXME: Error");},
+				success: function (msg){
+					table.draw();
+					
+				}
+		});
+	};
+	
+	$(".select_opt").click(function (){
+			window.setTimeout(reloadTable,300);
+	});
+    
+    
+     
+    
+   
+</script>
+</div></div></div></div>
+<div class="container-fluid top-margin">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="footer" class="bg-orange">&nbsp;
+				<a href="#">Wydawnictwo Aksjomat &copy 2017 - 2026</a>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+			<div id="subfooter">
+				<div class="row">
+					<div class="col-xs-offset-1 col-xs-10 col-md-5 col-md-offset-1 text-grey">
+						<div class="aksjomat">
+							<div>
+								<h3>Wydawnictwo Aksjomat Piotr Nodzyński</h2>
+								<div class="logo_aksjomat_footer"><a href="#"><img src="/res/img/logo_aksjomat_footer.png"></a></div>
+								<div style='float: left'>
+								Wita Stwosza 1, 87-100 Toruń<br />
+								NIP 9561070008<br />
+								Regon 870277038<br />
+								e-mail: serwis@aksjomat.torun.pl<br/>
+								Santander 11 1090 1506 0000 0001 1451 9247<br > <br>
+								</div>
+							</div>			
+						</div>	
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="aksjomat">
+							<div>
+	
+							</div>							
+						</div>
+					</div>					
+				</div>
+   			</div>
+   		</div>
+    </div>
+</div>
+ 
+ <div class="container-fluid hidden-sm hidden-xs">
+	<div class="row">
+  		<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Serwis</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/regulamin">Regulamin</a></li>				<li class="link-effect"><a href="/prywatnosc">Polityka poufności i bezpieczeństwa</a></li>				<li class="link-effect"><a href="/regulamin_platnosci">Regulamin płatności</a></li>				<li class="link-effect"><a href="/zasady">Zasady</a></li>				<li class="link-effect"><a href="/instrukcja">Instrukcja</a></li>				<li class="link-effect"><a href="/cennik">Cennik</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Obsługa klienta</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/pomoc">Pomoc techniczna</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Twoje konto</h4>
+				 <ul>
+					 				<li class="link-effect"><a href="/profile">Dane osobowe</a></li>				<li class="link-effect"><a href="/order">Lista zamówień</a></li>				<li class="link-effect"><a href="/volumelicense">Licencje zbiorowe</a></li>				<li class="link-effect"><a href="/wyniki">Postępy w nauce</a></li>
+				 </ul>
+			 </div>			<div class="col-md-3 col-xs-6 ftr-grid">
+				 <h4>Kategorie</h4>
+				 <ul>
+					 <li class="link-effect"><a href="/sklep/zaczek">&gt; Żaczek</a></li>							<li class="link-effect"><a href="/sklep/maluch">&gt; Maluch</a></li>							<li class="link-effect"><a href="/sklep/beniamin">&gt; Beniamin</a></li>							<li class="link-effect"><a href="/sklep/kadet">&gt; Kadet</a></li>							<li class="link-effect"><a href="/sklep/junior">&gt; Junior</a></li>							<li class="link-effect"><a href="/sklep/student">&gt; Student</a></li>							
+				 </ul>
+			 </div> 
+ 		</div>
+ 	</div>
+</div></div>
+	<script type="application/javascript">
+		if (window.location.hash && window.location.hash == '#_=_') {
+	        window.location.hash = '';
+    	}
+	
+		var UF="/";
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script src="/res/js/bootstrap.min.js"></script>
+	<script src="/res/js/form/form_extra.js"></script>
+	
+		
+</body>
+</html>
